@@ -35,8 +35,8 @@ class LoginForm(FlaskForm):
                 raise ValidationError("incorrect password, try again")
 
 class RegisterForm(FlaskForm):
-    username = StringField("username", validators=[DataRequired(),Length(4,20)])
-    email = StringField("email", validators=[DataRequired(),Length(4,20)])
+    username = StringField("username", validators=[DataRequired(),Length(4,100)])
+    email = StringField("email", validators=[DataRequired(),Length(4,100)])
     password = PasswordField("password", validators=[DataRequired(),Length(4,20)])
     submit = SubmitField("sign up")
     def validate_username(self, username):

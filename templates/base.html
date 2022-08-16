@@ -24,16 +24,17 @@
 
 
     <body>
-    <a href="{{ url_for('welcome') }}" style="margin:20px; color:black; text-decoration:none;"><h1>MYBooks</h1></a>
+    <div style="text-align: center;">
+    <a href="{{ url_for('welcome') }}" style="margin: 19 px; color:black; text-decoration:none;"><h1> MYBooks</h1></a>
+        </div>
     <nav class="navbar navbar-expand-lg navbar-light" style=" background-color: #f5eedc; display: flex; justify-content: center; align-items: center;">
-        <ul class="navbar-na"  style=" background-color: #f5eedc; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
-           <li class="nav-item"><a href="{{ url_for('index') }}" class="btn btn-primary" >Whole book collection</a></li>
-          <li class="nav-item"><a href="{{ url_for('reading_now') }}" class="btn btn-primary" >Reading now</a></li>
-           <li class="nav-item"><a href="{{ url_for('want_to_read') }}" class="btn btn-primary" >Want to read</a></li>
-            <li class="nav-item"><a href="{{ url_for('read') }}" class="btn btn-primary" >Read</a></li>
-          <li class="nav-item"><a href="{{ url_for('add') }}" class="btn btn-primary">Add New Book</a></li>
-              <li class="nav-item"><a href="{{ url_for('profile') }}" class="btn btn-primary" >My Profile</a></li>
-        </ul>
+        <div class="navbar-na"  style=" background-color: #f5eedc; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+            <p class="nav-item"><a href="{{ url_for('reading_now') }}" class="btn btn-primary" >Reading now</a></p>
+           <p class="nav-item"><a href="{{ url_for('want_to_read') }}" class="btn btn-primary" >Want to read</a></p>
+            <p class="nav-item"><a href="{{ url_for('read') }}" class="btn btn-primary" >Read</a></p>
+          <p class="nav-item"><a href="{{ url_for('add') }}" class="btn btn-primary">Add New Book</a></p>
+              <p class="nav-item"><a href="{{ url_for('profile') }}" class="btn btn-primary" >My Profile</a></p>
+        </div>
       </nav>
 				{% block main %}
 				{% endblock %}
