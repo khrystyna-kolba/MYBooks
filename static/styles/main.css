@@ -1,0 +1,33 @@
+body, html {
+  margin: 0;
+text-align: center;
+background-color:#f5eedc;
+}
+.nav-item{
+ margin: 10px;
+
+}
+
+.nav-item .btn.btn-primary{
+  background-color: #f5eedc;
+  border-style: solid;
+  border-color: #705041;
+  color: #705041;
+}
+.nav-item .btn.btn-primary:hover{
+  background-color: #dabd90;
+}
+.btn.btn-primary.add_p:hover{
+  background-color: #dabd90;
+}
+.btn.btn-primary.add_p{
+  background-color: #f5eedc;
+  border-style: solid;
+  border-color: #705041;
+  color: #705041;
+        margin: 15px
+        }
+li{
+list-style-position: inside;
+ list-style: none;
+}

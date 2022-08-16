@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block main %}
+<script>
+function outputUpdate(rating) {
+    document.querySelector('#selected-rating').innerHTML = rating + "&bigstar;".repeat(rating)+"&star;".repeat(10-rating);
+}
+</script>
+<h3>You are marking this book as read</h3>
+<p>
+<strong>{{book.title }}</strong>
+					   </a>  by {{book.author}} <em>created on {{book.date}} </em>
+</p>
+
+<form action="{{url_for('mark_read', book_id = book_id)}}" method="post" style="
+margin-left: auto;
+    margin-right: auto;
+    width: 20em">
+    <div style="">{{ form.csrf_token }} {{form.title.label}}
+    {{ form.title(class="form-control" , style="") }}
+    </div>
+    <div style="">
+    {{form.author.label}}&nbsp;
+    {{ form.author(class="form-control")}}
+    </div>
+    <div style="">
+    {{form.rating.label   }}&nbsp;
+    {{ form.rating(class="form-control", min=0, max=10, value=5, step=1, oninput="outputUpdate(value)")}}
+         <output for="rating" id="selected-rating">{%if form.rating.data%}
+             {{form.rating.data}}
+             {% else %}
+              5&bigstar;&bigstar;&bigstar;&bigstar;&bigstar;&star;&star;&star;&star;&star;
+             {% endif %}
+          </output>
+    </div>
+     {{form.response.label   }}&nbsp;
+    {{ form.response(class="form-control")}}
+    {{ form.submit(class="btn btn-primary add_p") }}
+    <a href="{{url_for('index')}}" class="btn btn-primary" style="margin:7px;" >cancel</a>
+</form>
+
+
+{% endblock %}

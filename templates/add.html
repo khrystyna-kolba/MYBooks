@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block main %}
+<h4 style="padding: 20px;" >You are on adding page</h4>
+<form action="/add" method="post" style="
+margin-left: auto;
+    margin-right: auto;
+    width: 20em">
+    <div style="">{{ form.csrf_token }} {{form.title.label}}
+    {{ form.title(class="form-control" , style="") }}
+    </div>
+    <div style="">
+    {{form.author.label}}&nbsp;
+    {{ form.author(class="form-control")}}
+    </div>
+    <div style="">
+    {{form.status.label   }}&nbsp;
+    {{ form.status(class="form-control")}}
+    </div>
+    {{ form.submit(class="btn btn-primary add_p") }}
+</form>
+{% endblock %}
+

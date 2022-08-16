@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h1>Edit book data: </h1>
+<form action="{{url_for('edit', book_id = book_id)}}" method="post"  style="
+margin-left: auto;
+    margin-right: auto;
+    width: 20em">
+    {{ form.csrf_token }}
+    {{form.title.label }}
+    {{ form.title(class="form-control") }}
+    {{form.author.label }}
+    {{ form.author(class="form-control")}}
+    <div style="">
+    {{form.status.label}}&nbsp;
+    {{ form.status(class="form-control")}}
+    </div>
+    {{ form.submit(class="btn btn-primary") }}
+</form>
+
+{% endblock %}

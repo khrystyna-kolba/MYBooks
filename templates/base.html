@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <meta charset="UTF-8">
+        <link type="text/css" rel="stylesheet" href="/static/styles/main.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <title>MYBooks</title>
+		<link rel="shortcut icon" href="/static/icon.ico">
+	    <meta name="description" content="main page of flask application"/>
+    </head>
+
+
+
+
+    <body>
+    <a href="{{ url_for('welcome') }}" style="margin:20px; color:black; text-decoration:none;"><h1>MYBooks</h1></a>
+    <nav class="navbar navbar-expand-lg navbar-light" style=" background-color: #f5eedc; display: flex; justify-content: center; align-items: center;">
+        <ul class="navbar-na"  style=" background-color: #f5eedc; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
+           <li class="nav-item"><a href="{{ url_for('index') }}" class="btn btn-primary" >Whole book collection</a></li>
+          <li class="nav-item"><a href="{{ url_for('reading_now') }}" class="btn btn-primary" >Reading now</a></li>
+           <li class="nav-item"><a href="{{ url_for('want_to_read') }}" class="btn btn-primary" >Want to read</a></li>
+            <li class="nav-item"><a href="{{ url_for('read') }}" class="btn btn-primary" >Read</a></li>
+          <li class="nav-item"><a href="{{ url_for('add') }}" class="btn btn-primary">Add New Book</a></li>
+              <li class="nav-item"><a href="{{ url_for('profile') }}" class="btn btn-primary" >My Profile</a></li>
+        </ul>
+      </nav>
+				{% block main %}
+				{% endblock %}
+</body>
+</html>

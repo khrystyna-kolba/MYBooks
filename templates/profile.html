@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h4 style="padding: 20px;">Welcome, {{username.username}}. You are logged in. </h4>
+<a href="{{url_for('logout')}}" class="btn btn-primary" style="margin:7px;">Log Out</a>
+{% endblock %}

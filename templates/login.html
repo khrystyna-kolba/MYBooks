@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block main %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+	   {{message}}
+</div>
+{% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% with errors = form.password.errors %}
+  {% if errors %}
+{% for error in errors %}
+<div class="alert alert-danger" role="alert">
+	   {{error}}
+</div>
+{% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% with errors = form.username.errors %}
+  {% if errors %}
+{% for error in errors %}
+<div class="alert alert-danger" role="alert">
+	   {{error}}
+</div>
+{% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+
+{% with errors = form.email.errors %}
+  {% if errors %}
+{% for error in errors %}
+<div class="alert alert-danger" role="alert">
+	   {{error}}
+</div>
+{% endfor %}
+  {% endif %}
+{% endwith %}
+
+<h3 style="padding: 20px;">Please, enter your data to login: </h3>
+<form action="#" method="post" style="
+margin-left: auto;
+    margin-right: auto;
+    width: 20em">
+   <div>{{ form.csrf_token }} {{form.username.label}}
+    {{ form.username(class="form-control" , style="") }}
+    </div>
+    <div>
+    {{form.email.label}}&nbsp;
+    {{ form.email(class="form-control")}}
+    </div>
+    <div>
+    {{form.password.label}}&nbsp;
+    {{ form.password(class="form-control")}}
+    </div>
+    {{ form.submit(class="btn btn-primary add_p") }}
+</form>
+<p>Don`t have a profile? <a href="{{url_for('register')}}" class="btn btn-primary" style="margin:7px;">register</a></p>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div style="  display: flex; justify-content: center;">
+<div style=" overflow-wrap: normal; margin-left: 20px; margin-right: 20px; width: 480px; text-align: left; justify-content: left;">
+<h3 style="padding: 5px;">{{book.title}}</h3>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+	   {{message}}
+</div>
+{% endfor %}
+  {% endif %}
+{% endwith %}
+
+<strong>Author: </strong>{{book.author}}<br>
+<strong>created on: </strong>{{book.date}}<br>
+<strong>rating: </strong>{{book.rating}}
+{% for i in range(book.rating)%}&bigstar;{% endfor %}{% for i in range(10 -book.rating)%}&star;{% endfor %}
+<br>
+<strong>Response:</strong>
+<p style=" word-wrap: break-word; ">{{book.response}}</p>
+<br>
+<a href="{{url_for('read')}}" class="btn btn-primary" style="margin:7px;" >return</a>
+    <a href="{{url_for('edit_finished', book_id=book.id)}}" class="btn btn-primary" style="margin:7px;">edit</a>
+					<a href="{{url_for('delete_finished', book_id=book.id)}}" class="btn btn-danger" style="margin:7px;" >delete</a>
+</div>
+</div>
+{% endblock %}

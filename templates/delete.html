@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h3>Are you sure to delete this book? This action cannot be undone!</h3>
+<p>
+<strong>{{book.title }}</strong> {{book.author}} created on {{book.date}}
+    status {{book.status}}
+</p>
+
+<form action="{{url_for('delete', book_id = book_id)}}" method="post" style="
+margin-left: auto;
+    margin-right: auto;
+    width: 20em">
+    {{ form.csrf_token }}
+    {{ form.submit(class="btn btn-danger add_p") }}
+</form>
+<a href="{{url_for('index')}}" class="btn btn-primary" style="margin:7px;" >Cancel</a>
+
+{% endblock %}

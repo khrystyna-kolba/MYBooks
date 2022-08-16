@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block main %}
+<script>
+function outputUpdate(rating) {
+    document.querySelector('#selected-rating').innerHTML = rating + "&bigstar;".repeat(rating)+"&star;".repeat(10-rating);
+}
+</script>
+<h3>You are editing this finished book</h3>
+<p>
+<strong>{{book.title }}</strong> {{book.author}} created on {{book.date}}
+    status {{book.status}}
+</p>
+
+<form action="{{url_for('edit_finished', book_id = book_id)}}" method="post" style="
+margin-left: auto;
+    margin-right: auto;
+    width: 20em">
+    <div style="">{{ form.csrf_token }} {{form.title.label}}
+    {{ form.title(class="form-control" , style="") }}
+    </div>
+    <div style="">
+    {{form.author.label}}&nbsp;
+    {{ form.author(class="form-control")}}
+    </div>
+    <div style="">
+    {{form.rating.label   }}&nbsp;
+    {{ form.rating(class="form-control", min=0, max=10, value=book.rating, step=1, oninput="outputUpdate(value)")}}
+         <output for="rating" id="selected-rating">
+            {{book.rating}}
+             {% for i in range(book.rating)%}&bigstar;{% endfor %}{% for i in range(10 -book.rating)%}&star;{%endfor %}
+          </output>
+    </div>
+     {{form.response.label   }}&nbsp;
+    {{ form.response(class="form-control")}}
+    {{ form.submit(class="btn btn-primary add_p") }}
+</form>
+
+
+{% endblock %}

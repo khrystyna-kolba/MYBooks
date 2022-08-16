@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<h4 style="padding: 20px;">Read</h4>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+	   {{message}}
+</div>
+{% endfor %}
+  {% endif %}
+{% endwith %}
+				<div>
+					<hr>
+					{% for task in tasks%}
+					<p style = "padding: 10px"><a href="{{url_for('read_book', book_id=task.id)}}" style="text-decoration: none; " >
+						<strong>{{task.title }}</strong></a> {{task.author}} created on {{task.date}}
+						  <div style="display: flex; flex-wrap: nowrap; justify-content: center;">
+					<a href="{{url_for('edit_finished', book_id=task.id)}}" class="btn btn-primary" style="margin:7px;">edit</a>
+					<a href="{{url_for('delete_finished', book_id=task.id)}}" class="btn btn-danger" style="margin:7px;" >delete</a>
+				</div>  <hr></p>
+					{% endfor %}
+
+				</div>
+{% endblock %}

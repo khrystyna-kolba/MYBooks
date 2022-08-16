@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div style="">
+<h4 style="padding: 20px;">{{status}}</h4>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+{% for message in messages %}
+<div class="alert alert-success" role="alert">
+	   {{message}}
+</div>
+{% endfor %}
+  {% endif %}
+{% endwith %}
+				<div style="">
+					<hr>
+					{% for t in tasks%}
+					   <p><strong>{{t.title }}</strong>  by {{t.author}} <em>created on {{t.date}}</em>
+						   <div style="display: flex; flex-wrap: nowrap; justify-content: center;">
+						   <a href="{{url_for('mark_read', book_id=t.id)}}" class="btn btn-success" style="margin:7px;">mark as read</a>
+					<a href="{{url_for('edit', book_id=t.id)}}" class="btn btn-primary" style="margin:7px;">edit</a>
+					<a href="{{url_for('delete', book_id=t.id)}}" class="btn btn-danger" style="margin:7px;" >delete</a>
+					</div>
+						   <hr>
+					   </p>
+					{% endfor %}
+
+					{% for f in finished%}
+					   <p style = "padding: 10px"><a href="{{url_for('read_book', book_id=f.id)}}" style="text-decoration: none; " ><strong>{{f.title }}</strong>
+					   </a>  by {{f.author}} <em>created on {{f.date}} </em>
+						   <div style="display: flex; flex-wrap: nowrap; justify-content: center;">
+					<a href="{{url_for('edit_finished', book_id=f.id)}}" class="btn btn-primary" style="margin:7px;">edit</a><a href="{{url_for('delete_finished', book_id=f.id)}}" class="btn btn-danger" style="margin:7px;" >delete</a>
+				</div> <hr>
+					   </p>
+					{% endfor %}
+
+				</div>
+	</div>
+{% endblock %}
